@@ -1,0 +1,178 @@
+// --------------------------
+// VARIABLES
+// --------------------------
+
+$maincolor: #ececec;
+$contrastcolor: #5da2d5;
+$secondarycontrast: #90ccf4;
+$palletyellow: #f3d250;
+
+@mixin textured-bg {
+  background: radial-gradient(#5da2d5 50%, transparent 95%) 0 0,
+    radial-gradient(#5da2d5 50%, transparent 95%) 8px 8px,
+    radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 0 1px,
+    radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 8px 9px;
+  background-color: #90ccf4;
+  background-size: 16px 16px;
+}
+
+@mixin flex-column {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin white-text-textured-bg {
+  color: $maincolor;
+  @include textured-bg;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #f3d250;
+  min-height: 90vh;
+  margin-bottom: 3em;
+
+  .cheeses {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    grid-column: 2/2;
+
+    img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      margin: auto;
+      border-radius: 5px;
+      box-shadow: 5px 5px 2px gray;
+    }
+  }
+
+  .cheese {
+    border-radius: 5px;
+    color: black;
+    background-color: lightgray;
+    margin: 1em;
+    border: 5px solid olive;
+    width: 15em;
+
+    & a {
+      color: darkblue;
+    }
+  }
+  .create-form {
+    margin: 1em;
+    grid-column: 1/1;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+  }
+
+  .show-image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 5px 5px 2px gray;
+  }
+
+  .update-form {
+    margin: 1em;
+    margin-bottom: 5em;
+    grid-column: 1/1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+#delete {
+  margin: 2em;
+}
+
+nav {
+  @include white-text-textured-bg();
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 3em;
+
+  a {
+    font-size: 1.5em;
+    color: $maincolor;
+  }
+}
+
+footer {
+  @include white-text-textured-bg();
+
+  height: 3em;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.create-form {
+  @include flex-column;
+  margin-bottom: 3em;
+  grid-column: 1 / 1;
+}
+
+form {
+  input {
+    background-color: #5da2d5;
+
+    color: whitesmoke;
+    padding: 10px;
+    font-size: 1.1em;
+    margin: 10px;
+
+    &[type="submit"]:hover {
+      background-color: gray;
+    }
+  }
+}
+
+button {
+  background-color: #d55d5d;
+  width: 8em;
+  color: whitesmoke;
+  padding: 10px;
+  font-size: 1.1em;
+  margin: 10px;
+  &:hover {
+    background-color: gray;
+  }
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: whitesmoke;
+  opacity: 0.8; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: whitesmoke;
+  opacity: 0.8;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: whitesmoke;
+  opacity: 0.8;
+}
